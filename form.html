@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Form</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        form{
+            margin: 40px auto;
+            padding: 20px;
+            max-width: 480px;
+            border: 1px solid green;
+            box-shadow: 0 0 22px 0 rgba(0, 0, 0, 0.2);
+        }
+        .form-field{
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
+        form label{
+         
+            font-weight: 700;
+        }
+        .error
+        {
+            color: red;
+            font-size: 14px;
+            display: block;
+        }
+        input,
+        textarea,
+        select{
+            width: 100%;
+            padding:10px 30px ;
+            border: 1px solid #f2f2f2;
+        }
+        [type*="submit"],
+        [type*="reset"]{
+            width: auto;
+            border: 0;
+            padding: 12px 40px;
+            background-color: green;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        [type*="submit"]:hover,
+        [type*="reset"]:hover{
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="post" name="demo_form">
+        <div class="form-field">
+            <label for="fname">Fullname</label>
+            <input type="text" name="fname" id="fname" value=""/>
+            <span class="error"></span>
+        </div>
+        <div class="form-field">
+            <label for="addr">Address</label>
+            <input type="text" name="addr" id="addr" value=""/>
+            <span class="error"></span>
+        </div>
+        <div class="form-field">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" value=""/>
+            <span class="error"></span>
+        </div>
+        <div class="form-field">
+            <label for="pwd">Password</label>
+            <input type="password" name="pwd" id="pwd" value=""/>
+            <span class="error"></span>
+        </div>
+        <div class="form-field">
+            <label for="cpwd">Confirm Password</label>
+            <input type="password" name="cpwd" id="cpwd" value=""/>
+            <span class="error"></span>
+        </div>
+        <div class="btn-group">
+            <input type="submit" name="submit" id="submit" value="Send"/>
+            <button type="reset" name="reset">Reset</button>
+        </div>
+    </form> 
+    <script>
+    //Delcaring variable
+        let fName = document.getElementById("fname");
+        let addr = document.getElementById("addr");
+        let email = document.getElementById("email");
+        let pdw = document.getElementById("pwd");
+        let cpwd = document.getElementById("cpwd");
+
+    //checking Condition
+        fName.addEventListener("keydown", () =>{
+            //console.log(fName.value.length);
+             if(fName.value.length<=3){
+                    fName.nextElementSibling.innerText = "Fullname must be atleast 3 characters.";
+             }else{
+                fName.nextElementSibling.innerText =" ";
+             }
+        });
+        addr.addEventListener("keyup", () =>{
+            //console.log(addr.value.length);
+             if(addr.value.length<=3){
+                    addr.nextElementSibling.innerText = "Fullname must be atleast 3 characters.";
+             }else{
+                addr.nextElementSibling.innerText =" ";
+             }
+        });
+        email.addEventListener("keydown", () =>{
+            //console.log(email.value.length);
+             if(email.value.length<=6){
+                    email.nextElementSibling.innerText = "Email is empty.";
+             }else{
+                email.nextElementSibling.innerText =" ";
+            //@.
+                if(email.value.indexOf(".") != email.value.indexOf("@") + 1){
+                email.nextElementSibling.innerText="Email is not Valid";
+            }
+            else{
+                email.nextElementSibling.innerText ="";
+                //.@
+            if(email.value.indexOf("@") != email.value.indexOf(".") + 1){
+                email.nextElementSibling.innerText="Email is not Valid";
+            }
+            else{
+                email.nextElementSibling.innerText ="";
+            }
+            if((email.value.indexOf("@") == -1) ||(email.value.indexOf(".") == -1)){
+                email.nextElementSibling.innerText = "Email is not valid";
+            }
+            else{
+                email.nextElementSibling.innerText ="";
+            }
+            }
+             }
+        });
+        pdw.addEventListener("keydown", () =>{
+            //console.log(pwd.value.length);
+             if(pwd.value.length<=6){
+                    pwd.nextElementSibling.innerText = "Must Contain atleast 6 characters.";
+             }else{
+                pwd.nextElementSibling.innerText =" ";
+             }
+        });
+        cpwd.addEventListener("keydown", () =>{
+            //console.log(cpwd.value.length);
+             if(pwd.value !=cpwd.value){
+                    cpwd.nextElementSibling.innerText = "Password is not matched.";
+             }else{
+                cpwd.nextElementSibling.innerText =" ";
+             }
+        });
+    </script>
+</body>
+</html>
